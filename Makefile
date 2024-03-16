@@ -1,5 +1,4 @@
 .PHONY: run
 
 run:
-	@echo off
-	python3 main.py
+	@python3 src/main.py
