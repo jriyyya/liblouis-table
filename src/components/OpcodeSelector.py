@@ -31,8 +31,8 @@ class OpcodeSelector(QWidget):
         self.setLayout(layout)
 
     def populate_list(self):        
-        for opcode in opcodes:
-            item = QListWidgetItem(opcode["code"])
+        for i, opcode in enumerate(opcodes):
+            item = QListWidgetItem(f"{i}. {opcode["code"]}")
             item.setToolTip(opcode["description"])
             self.list.addItem(item)
 
@@ -40,4 +40,4 @@ class OpcodeSelector(QWidget):
         def callback(code):
             cb(code)
             self.hide()
-        self.list.itemDoubleClicked.connect(lambda x : callback(x.text()))
+        self.list.itemDoubleClicked.connect(lambda x : callback(opcodes[int(x.text().split('.')[0])]))
